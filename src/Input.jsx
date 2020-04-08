@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Input = ({ onSubmit, value }) => {
+const Input = ({ onSubmit, onChange, value }) => {
   return (
     <>
-      <form onSubmit={ onSubmit }>
-        <label>
-            Devinez un nombre entre 1 et 100
-          <input type="number" value={value}/>
-        </label>
+      <form onSubmit={e => onSubmit(e)}>
+        <label>Devinez un nombre entre 1 et 100</label>
+        <input type="number" onChange={e => onChange(e)} value={value} />
       </form>
     </>
   );
 };
 
 Input.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-    value: PropTypes.number.isRequired
-}
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.number
+};
 export default Input;
